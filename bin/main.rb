@@ -58,43 +58,37 @@ class Game
   def make_move_two
     puts "\n#{@player2}, make your move. [beween 1 and 9]"
     @move2 = gets.chomp.to_i
-    return puts "you made your move #{@move2}. \nX will be place in position #{@move2}. " if move_valid?(@move2)
+    return puts "you made your move #{@move2}. \nO will be place in position #{@move2}. " if move_valid?(@move2)
 
     puts display_warning
     make_move_two
   end
 
-  # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Lint/UselessAssignment
   def play
     instructions
     player_prompt
     move = 1
-    num = 1
     while move < 10
       if move.odd?
         make_move_one
         check_slots
         show_board
         @played.push(@move1)
-        move += 1
-        puts "move is: #{move}"
-        num = 2
+        # move += 1
+        # puts "move is: #{move}"
       else
         switch_player
         make_move_two
         check_slots
         show_board
         @played.push(@move2)
-        move += 1
-        puts "move is: #{move}"
       end
+      move += 1
+      puts "move is: #{move}"
     end
-    puts "#{@player1} Won!"
+    puts "\n#{@player1} Won!"
   end
 
-  # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Lint/UselessAssignment
   def move_valid?(move)
     @slots[move - 1] == move and @played.none?(move)
     # if @slots.any?(move)
@@ -106,6 +100,7 @@ class Game
 
   def slots_full?
     @slots.all? { |cell| cell =~ /[^0-9]/ }
+    # if this is true, then the game is a Draw
   end
 
   def switch_player
