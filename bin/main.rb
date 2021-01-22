@@ -3,6 +3,8 @@
 class Game
   attr_reader :slot #:player1, :player2, :curr_player
 
+  WINNING_COMBINATION = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]].freeze
+
   def initialize()
     @slots = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     @played = []
@@ -101,6 +103,13 @@ class Game
   def slots_full?
     @slots.all? { |cell| cell =~ /[^0-9]/ }
     # if this is true, then the game is a Draw
+  end
+
+  def win_or_draw
+    # if combination is one of those listed in the winning_combination
+    puts 'You have won'
+    # elsif the combination is not winning combination and slots full
+    puts "it's a Draw"
   end
 
   def switch_player
