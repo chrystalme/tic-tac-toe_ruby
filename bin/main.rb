@@ -1,12 +1,15 @@
 #!/usr/bin/env ruby
 
-class Game
-  attr_reader :slot #:player1, :player2, :curr_player
+require_relative '../lib/game_board'
+require_relative '../lib/player'
+
+class Game < GameBoard
+  attr_reader :slot, :player1, :player2, :curr_player
 
   WINNING_COMBINATION = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]].freeze
 
   def initialize()
-    @slots = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    super
     @played = []
     # @player2 = player2
     # @curr_player = nil
@@ -40,11 +43,21 @@ class Game
   def player_prompt
     puts "\nPlayer 1, Please Enter your name: \n"
     @player1 = gets.chomp.capitalize
-    puts "#{@player1}, you use X as your symbol"
+    if name_valid?(@player1)
+      puts "#{@player1}, you use X as your symbol"
+    else
+      puts 'Enter a valid name. Name is String an 3-8 letters long'
+      player_prompt
+    end
 
     puts "\nPlayer 2, Please Enter your name: \n"
     @player2 = gets.chomp.capitalize
-    puts "#{@player2}, you use O as your symbol\n\n"
+    if name_valid?(@player2)
+      puts "#{@player2}, you use O as your symbol"
+    else
+      puts 'Enter a valid name. Name is String an 3-8 letters long'
+      player_prompt
+    end
   end
 
   # Ask for a move from the player
@@ -66,15 +79,18 @@ class Game
     make_move_two
   end
 
+  # rubocop:disable Metrics/MethodLength
   def play
     instructions
     player_prompt
+    puts show_board
     move = 1
     while move < 10
       if move.odd?
         make_move_one
         check_slots
-        show_board
+        update_board(@move1, 'X')
+        puts show_board
         @played.push(@move1)
         # move += 1
         # puts "move is: #{move}"
@@ -82,34 +98,23 @@ class Game
         switch_player
         make_move_two
         check_slots
-        show_board
+        update_board(@move2, 'O')
+        puts show_board
         @played.push(@move2)
       end
       move += 1
       puts "move is: #{move}"
+      win_or_draw
     end
-    puts "\n#{@player1} Won!"
   end
+  # rubocop:enable Metrics/MethodLength
 
   def move_valid?(move)
     @slots[move - 1] == move and @played.none?(move)
-    # if @slots.any?(move)
-    #   true
-    # else
-    #   false
-    # end
   end
 
   def slots_full?
     @slots.all? { |cell| cell =~ /[^0-9]/ }
-    # if this is true, then the game is a Draw
-  end
-
-  def win_or_draw
-    # if combination is one of those listed in the winning_combination
-    puts 'You have won'
-    # elsif the combination is not winning combination and slots full
-    puts "it's a Draw"
   end
 
   def switch_player
@@ -124,18 +129,28 @@ class Game
     !slots_full? and @played.none?
   end
 
-  def show_board
-    puts <<~HEREDOC
-       1 | 2 | 3
-      --- --- ---
-       4 | 5 | 6
-      --- --- ---
-       7 | 8 | 9
-    HEREDOC
+  def win_or_draw
+    if game_done?
+      puts "#{@curr_player} wins"
+    else
+      puts "It's a tie"
+    end
   end
 
   def display_warning
     "\e[31mSorry, invalid move! #{@played} are taken. Please, try again. \e[0m"
+  end
+
+  def name_valid?(name)
+    if name.is_a?(String)
+      true
+    elsif name.match(/([a-zA-Z]+)/)
+      true
+    elsif name.strip.length.between?(3, 8)
+      true
+    else
+      false
+    end
   end
 end
 
