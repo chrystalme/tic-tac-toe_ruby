@@ -52,7 +52,7 @@ class Game < GameBoard
 
     puts "\nPlayer 2, Please Enter your name: \n"
     @player2 = gets.chomp.capitalize
-    if name_valid?(@player2)
+    if name_valid?(@player2) && @player1 != @player2
       puts "#{@player2}, you use O as your symbol"
     else
       puts 'Enter a valid name. Name is String an 3-8 letters long'
@@ -83,7 +83,7 @@ class Game < GameBoard
   def play
     instructions
     player_prompt
-    puts GameBoard.show_board
+    puts show_board
     move = 1
     while move < 10
       if move.odd?
@@ -105,7 +105,7 @@ class Game < GameBoard
         @move = @player2_moves
       end
       move += 1
-      puts "move is: #{move}"
+      # puts "move is: #{move}"
       sleep 1
       if win?(@move)
         puts "#{@curr_player} WINS!"
@@ -154,12 +154,11 @@ class Game < GameBoard
     when 'N'
       puts "\nThank you for playing"
     else
-      puts "Please, enter either Y/N."
+      puts 'Please, enter either Y/N.'
     end
   end
 end
 
-  game1 = Game.new
-  game1.play
-  game1.end  
-
+game1 = Game.new
+game1.play
+game1.end
