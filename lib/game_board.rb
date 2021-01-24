@@ -22,15 +22,14 @@ class GameBoard
     @slots[move - 1] = symbol
   end
 
-  # def move_valid?(move)
-  #   @slots[move - 1] == move and @played.none?(move)
-  # end
-
   def slots_full?
     @slots.all? { |slot| slot =~ /[^0-9]/ }
   end
 
-  def game_done?
-    WINNING_COMBINATION.any? or slots_full? 
+  def win?(moves)
+    WINNING_COMBINATION.each do |comb|
+      return true if (comb.to_a - moves).empty?
+    end
+    false
   end
 end
