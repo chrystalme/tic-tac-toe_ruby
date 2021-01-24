@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/game_board'
-require_relative '../lib/player'
+require_relative '../lib/color'
 
 class Game < GameBoard
   attr_reader :slot, :player1, :player2, :curr_player
@@ -42,7 +42,7 @@ class Game < GameBoard
   # Receive the names of players and assign their symbols to identify their play
   def player_prompt
     puts "\nPlayer 1, Please Enter your name: \n"
-    @player1 = gets.chomp.capitalize
+    @player1 = gets.chomp.capitalize.cyan
     if name_valid?(@player1)
       puts "#{@player1}, you use X as your symbol"
     else
@@ -51,7 +51,7 @@ class Game < GameBoard
     end
 
     puts "\nPlayer 2, Please Enter your name: \n"
-    @player2 = gets.chomp.capitalize
+    @player2 = gets.chomp.capitalize.brown
     if name_valid?(@player2)
       puts "#{@player2}, you use O as your symbol"
     else
@@ -83,13 +83,14 @@ class Game < GameBoard
   def play
     instructions
     player_prompt
+    sleep 1
     puts show_board
     move = 1
     while move < 10
       if move.odd?
         @curr_player = @player1
         make_move_one
-        update_board(@move1, 'X')
+        update_board(@move1, 'X'.cyan)
         puts show_board
         @player1_moves.push(@move1 - 1)
         @played.push(@move1)
@@ -98,7 +99,7 @@ class Game < GameBoard
       else
         @curr_player = @player2
         make_move_two
-        update_board(@move2, 'O')
+        update_board(@move2, 'O'.brown)
         puts show_board
         @player2_moves.push(@move2 - 1)
         @played.push(@move2)
@@ -108,7 +109,7 @@ class Game < GameBoard
       # puts "move is: #{move}"
       sleep 1
       if win?(@move)
-        puts "#{@curr_player} WINS!"
+        puts "\n#{@curr_player} WINS!"
         break
       elsif slots_full?
         puts "it's a draw"
