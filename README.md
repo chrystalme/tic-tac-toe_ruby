@@ -26,7 +26,7 @@ Tic tac toe is a 2 player game that involves players putting "X" or "O" in a 3 b
 ### Setup
   Here is a step by step instruction on how to get it going
   
-    - Navigate to a suitable place in your computer where you want the game to recide using <cd *location where you want code to live*>
+    - Navigate to a suitable place in your computer where you want the game to recide using <cd /(location where you want code to live)>
     
     - clone the repository using  <git clone https://github.com/chrystalme/tic-tac-toe_ruby.git>
 
