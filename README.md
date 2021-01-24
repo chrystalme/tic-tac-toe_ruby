@@ -6,7 +6,10 @@
 
 ![screenshot](./app_screenshot.png)
 
-Additional description about the project and its features.
+
+## How to Play
+
+Tic tac toe is a 2 player game that involves players putting "X" or "O" in a 3 by 3 dimension board. The players choose between 1  - 9 where they would like their position to be. When a player has three consecutive slots in any direction horizontal or vertical and across, the player wins. If the entire board is filled and there is no 3 consecutive slots being occupied by the player's symbol, it is a draw.
 
 ## Built With
 
@@ -14,52 +17,36 @@ Additional description about the project and its features.
 - Rubocop
 - Visual Studio Code
 
-## Live Demo
 
-[Live Demo Link](https://livedemo.com)
-
-
-## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
-To get a local copy up and running follow these simple example steps.
+## Cloning and Installing this game locally
 
 ### Prerequisites
+  If you intend to run this game locally, you have to have Ruby installed. you can do that be following [this link](https://www.ruby-lang.org/en/downloads/) 
 
 ### Setup
+  Here is a step by step instruction on how to get it going
+    - Navigate to a suitable place in your computer where you want the game to recide using <cd *location where you want code to live*>
+    - clone the repository using  <git clone https://github.com/chrystalme/tic-tac-toe_ruby.git>
 
-### Install
+    - use cd tic-tac-toe_ruby to navigate to the folder
 
-### Usage
-
-### Run tests
-
-### Deployment
+    - you can run the game using <ruby bin/main.rb>
 
 
 
 ## Authors
 
-👤 **Author1**
+👤 **Malieze Afam ifeanyi**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
+- GitHub: [@chrystalme](https://github.com/chrystalme)
+- Twitter: [@afam_ifeanyi](https://twitter.com/afam_ifeanyi)
+- LinkedIn: [Malieze Afam Ifeanyi(chrys)](https://linkedin.com/afam-ifeanyi-chrys-malieze-63876576)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/chrystalme/tic-tac-toe_ruby/issues).
 
 ## Show your support
 
@@ -73,4 +60,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](lic.url) licensed.
+This project is [MIT](https://mit-license.org/) licensed.
