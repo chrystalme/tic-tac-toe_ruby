@@ -6,13 +6,13 @@ require_relative '../lib/player'
 class Game < GameBoard
   attr_reader :slot, :player1, :player2, :curr_player
 
-  WINNING_COMBINATION = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]].freeze
-
   def initialize()
     super
     @played = []
-    # @player2 = player2
-    # @curr_player = nil
+    @player1_moves = []
+    @player2_moves = []
+    @curr_player = nil
+    @move = []
   end
 
   # Introduction to our game and how to play
@@ -83,28 +83,39 @@ class Game < GameBoard
   def play
     instructions
     player_prompt
-    puts show_board
+    puts GameBoard.show_board
     move = 1
     while move < 10
       if move.odd?
+        @curr_player = @player1
         make_move_one
-        check_slots
         update_board(@move1, 'X')
         puts show_board
+        @player1_moves.push(@move1 - 1)
         @played.push(@move1)
-        # move += 1
-        # puts "move is: #{move}"
+        @move = @player1_moves
+
       else
-        switch_player
+        @curr_player = @player2
         make_move_two
-        check_slots
         update_board(@move2, 'O')
         puts show_board
+        @player2_moves.push(@move2 - 1)
         @played.push(@move2)
+        @move = @player2_moves
       end
       move += 1
       puts "move is: #{move}"
-      win_or_draw
+      sleep 1
+      if win?(@move)
+        puts "#{@curr_player} WINS!"
+        break
+      elsif slots_full?
+        puts "it's a draw"
+      else
+        sleep 1
+        puts "\nGame On"
+      end
     end
   end
   # rubocop:enable Metrics/MethodLength
@@ -115,26 +126,6 @@ class Game < GameBoard
 
   def slots_full?
     @slots.all? { |cell| cell =~ /[^0-9]/ }
-  end
-
-  def switch_player
-    if @curr_player == @player1
-      @player2
-    else
-      @player1
-    end
-  end
-
-  def check_slots
-    !slots_full? and @played.none?
-  end
-
-  def win_or_draw
-    if game_done?
-      puts "#{@curr_player} wins"
-    else
-      puts "It's a tie"
-    end
   end
 
   def display_warning
@@ -152,7 +143,23 @@ class Game < GameBoard
       false
     end
   end
+
+  def end
+    puts "Would you like to play again?\n Y/N"
+    sleep 1
+    ans = gets.chomp.upcase
+    case ans
+    when 'Y'
+      play
+    when 'N'
+      puts "\nThank you for playing"
+    else
+      puts "Please, enter either Y/N."
+    end
+  end
 end
 
-game1 = Game.new
-game1.play
+  game1 = Game.new
+  game1.play
+  game1.end  
+
