@@ -21,7 +21,7 @@ class GameBoard
   def update_board(move, symbol)
     @slots[move - 1] = symbol
   end
-  
+
   def slots_full?
     @slots.all? { |slot| slot =~ /[^0-9]/ }
   end

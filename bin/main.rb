@@ -52,7 +52,7 @@ class Game < GameBoard
 
     puts "\nPlayer 2, Please Enter your name: \n"
     @player2 = gets.chomp.capitalize
-    if name_valid?(@player2) && @player1 != @player2
+    if name_valid?(@player2)
       puts "#{@player2}, you use O as your symbol"
     else
       puts 'Enter a valid name. Name is String an 3-8 letters long'
