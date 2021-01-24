@@ -2,7 +2,7 @@
 
 # Tic-Tac-Toe Game
 
-> One paragraph statement about the project.
+> This game attempts to recreate the epic game of tic tac toe using Ruby language. 
 
 ![screenshot](./app_screenshot.png)
 
@@ -25,7 +25,9 @@ Tic tac toe is a 2 player game that involves players putting "X" or "O" in a 3 b
 
 ### Setup
   Here is a step by step instruction on how to get it going
+  
     - Navigate to a suitable place in your computer where you want the game to recide using <cd *location where you want code to live*>
+    
     - clone the repository using  <git clone https://github.com/chrystalme/tic-tac-toe_ruby.git>
 
     - use cd tic-tac-toe_ruby to navigate to the folder
