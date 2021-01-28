@@ -112,7 +112,6 @@ class Game < GameBoard
         @move = @player2_moves
       end
       move += 1
-      # puts "move is: #{move}"
       sleep 1
       if win?(@move)
         puts "\n#{@curr_player} WINS!"
@@ -132,17 +131,7 @@ class Game < GameBoard
   end
 
   def end
-    #   puts "Would you like to play again?\n Y/N"
-    #   sleep 1
-    #   ans = gets.chomp.upcase
-    #   case ans
-    #   when 'Y'
-    #     play
-    #   when 'N'
     puts "\nThank you for playing"
-    #   else
-    #     puts 'Please, enter either Y/N.'
-    #   end
   end
 end
 
