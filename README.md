@@ -2,9 +2,7 @@
 
 # Tic-Tac-Toe Game -- Rspec Testing
 
-> One paragraph statement about the project.
-
-![screenshot](./app_screenshot.png)
+> Test Driven Development using Rspec. 
 
 Rspec is the most widely used testing framework for Ruby and Ruby on Rails
 
