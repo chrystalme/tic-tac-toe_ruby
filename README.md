@@ -1,65 +1,50 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Tic-Tac-Toe Game
+# Tic-Tac-Toe Game -- Rspec Testing
 
 > One paragraph statement about the project.
 
 ![screenshot](./app_screenshot.png)
 
-Additional description about the project and its features.
+Rspec is the most widely used testing framework for Ruby and Ruby on Rails
 
 ## Built With
 
 - Ruby
 - Rubocop
 - Visual Studio Code
-
-## Live Demo
-
-[Live Demo Link](https://livedemo.com)
+- Rspec
 
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
-To get a local copy up and running follow these simple example steps.
+To get a local copy:
+  - Clone the repository using < git clone https://github.com/chrystalme/tic-tac-toe_ruby.git >
+  - Change directory to the parent folder of the project using< cd tic-tac-toe-ruby >
+ 
 
 ### Prerequisites
 
-### Setup
-
-### Install
-
-### Usage
+  - Ruby has to be installed on your system if you don't have ruby, install it using < gem install ruby>
+  - Rspec can be installed using gem as well < gem install rspec>
 
 ### Run tests
-
-### Deployment
-
+ - Run tests with < ruby spec/game_board_spec.rb>
 
 
 ## Authors
 
-👤 **Author1**
+👤 **Malieze Afam Ifeanyi**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/linkedinhandle)
+- GitHub: [@chrystalme](https://github.com/chrystalme)
+- Twitter: [@afam_ifeanyi](https://twitter.com/afam_ifeanyi)
+- LinkedIn: [Malieze Afam Ifeanyi(chrys)](https://linkedin.com/afam-chrys)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/chrystalme/tic-tac-toe_ruby/issues).
 
 ## Show your support
 
@@ -73,4 +58,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](lic.url) licensed.
+This project is [MIT](https://mit-license.org/) licensed.
