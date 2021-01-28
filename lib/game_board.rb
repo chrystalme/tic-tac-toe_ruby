@@ -27,7 +27,7 @@ class GameBoard
   end
 
   def move_valid?(move)
-    slots[move - 1] == move # && @played.none?(move)
+    slots[move - 1] == move 
   end
 
   def name_valid?(name)
