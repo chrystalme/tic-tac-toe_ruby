@@ -1,4 +1,3 @@
-require '../spec/spec_helper'
 require_relative '../lib/game_board'
 describe GameBoard do
   let(:board) { described_class.new }
