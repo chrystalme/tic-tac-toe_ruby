@@ -1,7 +1,7 @@
 require '../spec/spec_helper'
 require_relative '../lib/game_board'
 describe GameBoard do
-  subject(:board) { described_class.new }
+  let(:board) { described_class.new }
 
   describe '#update_board' do
     context 'when the board is new' do
