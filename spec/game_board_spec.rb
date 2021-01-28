@@ -45,6 +45,33 @@ describe GameBoard do
         expect(player_move).to be false
       end
     end
+
+    context 'when game in play' do
+      before do
+        board.instance_variable_set(:@slots, ['O', 2, 3, 'X', 'X', 6, 7, 'X', 9])
+      end
+      it 'is not a valid move' do
+        player_move = 5
+        player_symbol = 'O'
+        board.update_board(player_move, player_symbol)
+        updated_board = board.slots
+        expect(updated_board).to_not be true
+      end
+    end
+  end
+
+  describe '#name_valid?' do
+    context 'name has to be a string, between 3 and 8 characters' do
+      it 'should return true when "Chrys" is given' do
+        valid_name = board.name_valid?('Chrys')
+        expect(valid_name).to be true
+      end
+
+      it 'should return true when "Chrys" is given' do
+        valid_name = board.name_valid?('Chrystalme')
+        expect(valid_name).to_not be true
+      end
+    end
   end
 
   describe '#win?(move)' do
@@ -74,7 +101,7 @@ describe GameBoard do
     end
   end
 
-  describe 'slots_full?' do
+  describe '#slots_full?' do
     before do
       board.instance_variable_set(:@slots, %w[O X O O X O X O X])
     end
