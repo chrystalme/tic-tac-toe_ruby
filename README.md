@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
+
 
 # Tic-Tac-Toe Game
 
@@ -63,3 +63,4 @@ Give a ⭐️ if you like this project!
 ## 📝 License
 
 This project is [MIT](https://mit-license.org/) licensed.
+

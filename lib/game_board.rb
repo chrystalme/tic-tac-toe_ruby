@@ -26,6 +26,14 @@ class GameBoard
     @slots.all? { |slot| slot =~ /[^0-9]/ }
   end
 
+  def move_valid?(move)
+    slots[move - 1] == move
+  end
+
+  def name_valid?(name)
+    name.is_a?(String) && name.match(/([a-zA-Z]+)/) && name.strip.length.between?(3, 8)
+  end
+
   def win?(moves)
     WINNING_COMBINATION.each do |comb|
       return true if (comb.to_a - moves).empty?

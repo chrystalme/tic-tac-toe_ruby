@@ -40,23 +40,27 @@ class Game < GameBoard
   end
 
   # Receive the names of players and assign their symbols to identify their play
-  def player_prompt
+  def player1_prompt
     puts "\nPlayer 1, Please Enter your name: \n"
-    @player1 = gets.chomp.capitalize.cyan
+    @player1 = gets.chomp
     if name_valid?(@player1)
+      @player1 = @player1.capitalize.cyan
       puts "#{@player1}, you use X as your symbol"
     else
       puts 'Enter a valid name. Name is String an 3-8 letters long'
-      player_prompt
+      player1_prompt
     end
+  end
 
+  def player2_prompt
     puts "\nPlayer 2, Please Enter your name: \n"
-    @player2 = gets.chomp.capitalize.brown
+    @player2 = gets.chomp
     if name_valid?(@player2)
+      @player2 = @player2.capitalize.brown
       puts "#{@player2}, you use O as your symbol"
     else
       puts 'Enter a valid name. Name is String an 3-8 letters long'
-      player_prompt
+      player2_prompt
     end
   end
 
@@ -82,7 +86,9 @@ class Game < GameBoard
   # rubocop:disable Metrics/MethodLength
   def play
     instructions
-    player_prompt
+    player1_prompt
+    sleep 1
+    player2_prompt
     sleep 1
     puts show_board
     move = 1
@@ -106,7 +112,6 @@ class Game < GameBoard
         @move = @player2_moves
       end
       move += 1
-      # puts "move is: #{move}"
       sleep 1
       if win?(@move)
         puts "\n#{@curr_player} WINS!"
@@ -121,42 +126,12 @@ class Game < GameBoard
   end
   # rubocop:enable Metrics/MethodLength
 
-  def move_valid?(move)
-    @slots[move - 1] == move and @played.none?(move)
-  end
-
-  def slots_full?
-    @slots.all? { |cell| cell =~ /[^0-9]/ }
-  end
-
   def display_warning
-    "\e[31mSorry, invalid move! #{@played} are taken. Please, try again. \e[0m"
-  end
-
-  def name_valid?(name)
-    if name.is_a?(String)
-      true
-    elsif name.match(/([a-zA-Z]+)/)
-      true
-    elsif name.strip.length.between?(3, 8)
-      true
-    else
-      false
-    end
+    "\e[31mSorry, invalid move! #{@played} is/are taken. Please, try again. \e[0m"
   end
 
   def end
-    #   puts "Would you like to play again?\n Y/N"
-    #   sleep 1
-    #   ans = gets.chomp.upcase
-    #   case ans
-    #   when 'Y'
-    #     play
-    #   when 'N'
     puts "\nThank you for playing"
-    #   else
-    #     puts 'Please, enter either Y/N.'
-    #   end
   end
 end
 
